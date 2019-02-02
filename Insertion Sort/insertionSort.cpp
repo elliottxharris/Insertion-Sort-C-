@@ -23,13 +23,20 @@
 #include <fstream>
 using namespace std;
 
+// defined the insertion sort function
 void insertionSort(int a[], int size) {
+	// loop through the past an array starting at the second element
 	for (int i = 1; i < size; i++) {
+		// set the current value to the current element at that Index
 		int value = a[i];
+		// Store the current index
 		int index = i;
+		// while the current index is greater than zero and the index to the right of it is greater than the current value for the current index
 		for (; index > 0 && a[index - 1] > value; index--) {
+			// swap the values in the indexes
 			a[index] = a[index - 1];
 		}
+		// swap the values and indexes
 		a[index] = value;
 	}
 }
@@ -40,27 +47,31 @@ int main() {
 	
 	// set the seed to the current sign and create and integer array that can hold 50,000 integers
 	srand( static_cast<unsigned int>(time(NULL)));
-	int randomIntegerArray[50000];
+	int *randomIntegerArray = new int[50000];
 	
 	// loop through the array and set each index to a random number
 	for (int i = 0; i < 50000; i++) {
 		int random = (rand() % 50000000) + 1;
 		
+		// set each element in the array to random number
 		randomIntegerArray[i] = random;
 	}
 	
 #pragma mark - sort random numbers
 	
+	// sort of the array using insertion sort
 	insertionSort(randomIntegerArray, 50000);
 	
 #pragma mark - save random numbers
 	
 	ofstream fout;
 	
+	// Open/Create a file called sorted and appendto it
 	fout.open("sorted.txt", ios::app);
 	
 	for (int i = 0; i < 50000; i++) {
 		
+		// output every integer in the array to the file
 		fout << randomIntegerArray[i] << endl;
 		
 	}
