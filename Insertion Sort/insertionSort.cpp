@@ -57,15 +57,15 @@ int main() {
 	
 	ofstream fout;
 	
+	fout.open("sorted.txt", ios::app);
+	
 	for (int i = 0; i < 50000; i++) {
-		
-		fout.open("sorted.txt");
 		
 		fout << randomIntegerArray[i] << endl;
 		
-		fout.close();
-		
 	}
+	
+	fout.close();
 	
 	return 0;
 }
