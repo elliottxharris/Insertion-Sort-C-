@@ -55,6 +55,18 @@ int main() {
 	
 #pragma mark - save random numbers
 	
+	ofstream fout;
+	
+	for (int i = 0; i < 50000; i++) {
+		
+		fout.open("sorted.txt");
+		
+		fout << randomIntegerArray[i] << endl;
+		
+		fout.close();
+		
+	}
+	
 	return 0;
 }
 
