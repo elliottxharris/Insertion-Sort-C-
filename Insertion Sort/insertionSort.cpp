@@ -20,8 +20,19 @@
  */
 
 #include <iostream>
-#include <ctime>
+#include <fstream>
 using namespace std;
+
+void insertionSort(int a[], int size) {
+	for (int i = 1; i < size; i++) {
+		int value = a[i];
+		int index = i;
+		for (; index > 0 && a[index - 1] > value; index--) {
+			a[index] = a[index - 1];
+		}
+		a[index] = value;
+	}
+}
 
 int main() {
 	
@@ -38,9 +49,14 @@ int main() {
 		randomIntegerArray[i] = random;
 	}
 	
-#pragma mark - sort random number
+#pragma mark - sort random numbers
+	
+	insertionSort(randomIntegerArray, 50000);
 	
 #pragma mark - save random numbers
 	
 	return 0;
 }
+
+
+
